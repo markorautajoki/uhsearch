@@ -14,4 +14,7 @@ export class uhsearch {
     console.info('uhsearch Component Mounted Successfully');
   }
 
+  search(searchInput) {
+    console.log(searchInput.value);
+  }
 }
