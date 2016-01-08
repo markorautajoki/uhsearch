@@ -2,13 +2,14 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     traceur = require('gulp-traceur'),
     webserver = require('gulp-webserver'),
-    nodemon = require('gulp-nodemon');
+    nodemon = require('gulp-nodemon'),
     browserSync = require('browser-sync'),
-    proxyMiddleware = require('http-proxy-middleware');
-    shell = require('gulp-shell');
+    proxyMiddleware = require('http-proxy-middleware'),
+    shell = require('gulp-shell'),
+    bower = require('gulp-bower');
 
 // run init tasks
-gulp.task('default', ['dependencies', 'js', 'html', 'css', 'watch', 'serve', 'nodemon', 'browser-sync']);
+gulp.task('default', ['dependencies', 'js', 'html', 'css', 'watch', 'serve', 'nodemon', 'browser-sync', 'bower']);
 
 // run development task
 gulp.task('dev', ['watch', 'serve', 'nodemon']);
@@ -104,4 +105,7 @@ gulp.task('nodemon', function () {
 
 gulp.task('test', shell.task('npm test', {cwd : './server'}));
 
-
+gulp.task('bower', function() {
+  return bower()
+    .pipe(gulp.dest('build/css/'))
+});

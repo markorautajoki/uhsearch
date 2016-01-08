@@ -1,0 +1,7 @@
+{
+  "name": "uhsearch",
+  "version": "0.0.1",
+  "dependencies": {
+    "Styleguide": "https://github.com/UH-StudentServices/Styleguide.git#release-1.0.7"
+  }
+}

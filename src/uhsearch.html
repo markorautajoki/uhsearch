@@ -5,8 +5,10 @@
   <button type="submit">Mau!</button>
 </form>
 
-<ul>
-  <li *ng-for='#row of searchResults'>
-      {{ row.title }}
-  </li>
+<ul class="list-of-links--light">
+	<li *ng-for='#row of searchResults'>
+		<a href="{{ row.link }}">
+	    	{{ row.title }}
+	    </a>
+	</li>
 </ul>
