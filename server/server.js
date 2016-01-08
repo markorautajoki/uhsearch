@@ -14,5 +14,5 @@ app.get('/api/search/:term', function (req, res) {
 });
 
 app.listen(3300, function () {
-  console.log('Search app listening on port 3000!');
+  console.log('Search app listening on port 3300!');
 })
