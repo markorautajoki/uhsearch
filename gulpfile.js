@@ -3,6 +3,8 @@ var gulp = require('gulp'),
     traceur = require('gulp-traceur'),
     webserver = require('gulp-webserver'),
     nodemon = require('gulp-nodemon');
+    browserSync = require('browser-sync'),
+    proxyMiddleware = require('http-proxy-middleware');
 
 // run init tasks
 gulp.task('default', ['dependencies', 'js', 'html', 'css']);
@@ -24,6 +26,20 @@ gulp.task('watch', function () {
   gulp.watch('src/**/*.html', ['html']);
   gulp.watch('src/**/*.css', ['css']);
 });
+
+// Static server
+gulp.task('browser-sync', function() {
+  var serverProxy = proxyMiddleware('/api', {target: 'http://localhost:3300'}),
+      clientProxy = proxyMiddleware('/', {target: 'http://localhost:8000'});
+  browserSync.init({
+    startPath: "/",
+    server: {
+      baseDir: "./",
+      middleware: [serverProxy, clientProxy]
+    }
+  });
+});
+
 
 // move dependencies into build dir
 gulp.task('dependencies', function () {

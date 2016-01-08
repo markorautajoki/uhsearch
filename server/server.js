@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var searchService = require('./service/search.service.js');
 
-app.get('/search/:term', function (req, res) {
+app.get('/api/search/:term', function (req, res) {
   searchService
     .search(req.params.term)
     .then(function (body) {
@@ -13,6 +13,6 @@ app.get('/search/:term', function (req, res) {
     });
 });
 
-app.listen(3000, function () {
+app.listen(3300, function () {
   console.log('Search app listening on port 3000!');
 })
