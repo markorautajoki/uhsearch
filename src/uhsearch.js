@@ -4,7 +4,8 @@ import {Http, HTTP_PROVIDERS} from "angular2/http";
 
 
 @Component({
-  selector: 'uhsearch'
+  selector: 'uhsearch',
+  viewProviders: [HTTP_PROVIDERS]
 })
 
 @View({
@@ -13,8 +14,9 @@ import {Http, HTTP_PROVIDERS} from "angular2/http";
 
 export class uhsearch {
 
-  constructor() {
+  constructor(http: Http) {
     console.info('uhsearch Component Mounted Successfully');
+    this.http = http;
     this.searchList = [
       { title: 'eka',  description: 'ekan selska' },
       { title: 'toka', description: 'tokan selska' },
@@ -24,7 +26,7 @@ export class uhsearch {
 
   search(searchInput) {
     //this.searchList.push({ title: searchInput.value })
-    http.get('/api/search/'+searchInput.value)
+    this.http.get('/api/search/'+searchInput.value)
      // Call map on the response observable to get the parsed people object
      .map(res => res.json())
      // Subscribe to the observable to get the parsed people object and attach it to the
