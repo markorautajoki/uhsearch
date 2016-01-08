@@ -20,7 +20,7 @@ describe('searchApi', function() {
     searchApiMock(queryParams, 200, response);
 
     request(server)
-      .get('/search/kissa')
+      .get('/api/search/kissa')
       .expect(function(res) {
         assert.equal(JSON.parse(res.body).title, 'Katti');
         assert.equal(JSON.parse(res.body).description, 'Musta kissa');

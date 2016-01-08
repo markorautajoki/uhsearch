@@ -1,5 +1,3 @@
-var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./server.properties');
 var nock = require('nock');
 
 function createApiMock(queryParams, responseCode, responseBody) {

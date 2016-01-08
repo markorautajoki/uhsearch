@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     nodemon = require('gulp-nodemon');
     browserSync = require('browser-sync'),
     proxyMiddleware = require('http-proxy-middleware');
+    shell = require('gulp-shell');
 
 // run init tasks
 gulp.task('default', ['dependencies', 'js', 'html', 'css', 'watch', 'serve', 'nodemon', 'browser-sync']);
@@ -94,8 +95,13 @@ gulp.task('css', function () {
 
 gulp.task('nodemon', function () {
   nodemon({
-    script: 'server/server.js'
+    script: 'server.js'
+  , cwd : 'server'
   , ext: 'js html'
   , env: { 'NODE_ENV': 'development' }
   })
 });
+
+gulp.task('test', shell.task('npm test', {cwd : './server'}));
+
+

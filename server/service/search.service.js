@@ -1,5 +1,5 @@
 var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('server/server.properties');
+var properties = PropertiesReader('./server.properties');
 
 var request = require('request');
 
