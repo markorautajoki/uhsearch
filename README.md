@@ -11,3 +11,7 @@
 ## Running the server
 
 `gulp dev`
+
+## Running tests
+
+`npm test`
