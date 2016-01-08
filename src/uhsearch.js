@@ -17,22 +17,13 @@ export class uhsearch {
   constructor(http: Http) {
     console.info('uhsearch Component Mounted Successfully');
     this.http = http;
-    // this.searchList = [
-    //   { title: 'eka',  description: 'ekan selska' },
-    //   { title: 'toka', description: 'tokan selska' },
-    //   { title: 'koka', description: 'kokan selska' }
-    // ];
   }
 
   search(searchInput) {
-    //this.searchList.push({ title: searchInput.value })
     this.http.get('/api/search/'+searchInput.value)
-     // Call map on the response observable to get the parsed people object
-     .map(res => res.json())
-     // Subscribe to the observable to get the parsed people object and attach it to the
-     // component
+     .map(res => JSON.parse(res.json()))
      .subscribe(res => {
-       this.searchResults = JSON.parse(res).data.items
+       this.searchResults = res.data.items
      });
   }
 }
