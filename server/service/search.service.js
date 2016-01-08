@@ -5,11 +5,25 @@ var request = require('request');
 
 function search(term) {
   var searchUrl = properties.get('search.url');
-  searchUrl += '/focus/api?method=searchc&lang=fi&format=json&max=10&query=';
 
   return new Promise(function(resolve, reject) {
-    request(searchUrl + term, function (error, response, body) {
-      resolve(body);
+
+    var requestParams = {
+      method: 'searchc',
+      lang : 'fi',
+      format : 'json',
+      max : 10,
+      query : term
+    }
+
+    request({url: searchUrl, qs: requestParams}, function (error, response, body) {
+      if(error) {
+        console.log(response);
+        reject(error);
+      } else {
+        console.log(response);
+        resolve(body);
+      }
     });
   });
 }
