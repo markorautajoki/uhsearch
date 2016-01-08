@@ -4,3 +4,7 @@
   <input #searchinput placeholder="Search here...">
   <button type="submit">Search!</button>
 </form>
+
+<div *ng-for='#row of searchList'>
+    {{ row.title }} - {{ row.description }}
+</div>
