@@ -1,13 +1,14 @@
 var gulp = require('gulp'),
     rename = require('gulp-rename'),
     traceur = require('gulp-traceur'),
-    webserver = require('gulp-webserver');
+    webserver = require('gulp-webserver'),
+    nodemon = require('gulp-nodemon');
 
 // run init tasks
 gulp.task('default', ['dependencies', 'js', 'html', 'css']);
 
 // run development task
-gulp.task('dev', ['watch', 'serve']);
+gulp.task('dev', ['watch', 'serve', 'nodemon']);
 
 // serve the build dir
 gulp.task('serve', function () {
@@ -71,4 +72,12 @@ gulp.task('html', function () {
 gulp.task('css', function () {
   return gulp.src('src/**/*.css')
     .pipe(gulp.dest('build'))
+});
+
+gulp.task('nodemon', function () {
+  nodemon({
+    script: 'server/server.js'
+  , ext: 'js html'
+  , env: { 'NODE_ENV': 'development' }
+  })
 });
