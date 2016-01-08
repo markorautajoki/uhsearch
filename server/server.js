@@ -6,7 +6,7 @@ app.get('/api/search/:term', function (req, res) {
   searchService
     .search(req.params.term)
     .then(function (body) {
-      res.send(body);
+      res.json(body);
     })
     .catch(function(error) {
       res.status(400).send(error);
@@ -16,3 +16,5 @@ app.get('/api/search/:term', function (req, res) {
 app.listen(3300, function () {
   console.log('Search app listening on port 3300!');
 })
+
+module.exports = app;

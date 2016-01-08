@@ -18,10 +18,10 @@ function search(term) {
 
     request({url: searchUrl, qs: requestParams}, function (error, response, body) {
       if(error) {
+        console.log(error);
         console.log(response);
         reject(error);
       } else {
-        console.log(response);
         resolve(body);
       }
     });
