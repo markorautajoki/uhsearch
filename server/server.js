@@ -7,8 +7,9 @@ app.get('/', function (req, res) {
 });
 
 app.get('/search/:term', function (req, res) {
-  var searchResult = searchService.search(req.params.term);
-  res.send(searchResult);
+  searchService.search(req.params.term).then(function (body) {
+    res.send(body);
+  });
 });
 
 app.listen(3000, function () {

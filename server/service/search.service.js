@@ -7,8 +7,10 @@ function search(term) {
   var searchUrl = properties.get('search.url');
   searchUrl += '/focus/api?method=searchc&lang=fi&format=json&max=10&query=';
 
-  request(searchUrl + term, function (error, response, body) {
-    console.log(body);
+  return new Promise(function(resolve, reject) {
+    request(searchUrl + term, function (error, response, body) {
+      resolve(body);
+    });
   });
 }
 
