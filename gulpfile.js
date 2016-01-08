@@ -42,13 +42,19 @@ gulp.task('js', function () {
     .pipe(rename({
       extname: ''
     }))
-    .pipe(traceur({
-      modules: 'instantiate',
-      moduleName: true,
-      annotations: true,
-      types: true,
-      memberVariables: true
-    }))
+    .pipe(
+      traceur({
+        modules: 'instantiate',
+        moduleName: true,
+        annotations: true,
+        types: true,
+        memberVariables: true
+      }).on('error', function(err){
+        console.log(err.message);
+        console.log("in: " + err.fileName);
+        this.emit("end")
+      })
+    )
     .pipe(rename({
       extname: '.js'
     }))
