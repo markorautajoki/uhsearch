@@ -1,5 +1,8 @@
 import {ComponentMetadata as Component, ViewMetadata as View, NgZone} from 'angular2/angular2';
 
+import {Http, HTTP_PROVIDERS} from 'lib/http';
+
+
 @Component({
   selector: 'uhsearch'
 })
@@ -20,6 +23,12 @@ export class uhsearch {
   }
 
   search(searchInput) {
-    this.searchList.push({ title: searchInput.value })
+    //this.searchList.push({ title: searchInput.value })
+    Http.get('/api/search/'+searchInput.value)
+     // Call map on the response observable to get the parsed people object
+     .map(res => res.json())
+     // Subscribe to the observable to get the parsed people object and attach it to the
+     // component
+     .subscribe(res => this.searchResults = res.data.items);
   }
 }
