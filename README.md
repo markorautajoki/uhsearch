@@ -3,6 +3,8 @@
 ## Installation
 
 `npm install`
+`cd server`
+`npm install`
 
 ## Building the assets
 
