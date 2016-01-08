@@ -1,5 +1,6 @@
+npm install -g nodemon
 npm install
 
-node index.js
+nodemon server.js
 
 goto: localhost:3000
