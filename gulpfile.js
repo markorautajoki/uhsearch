@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     proxyMiddleware = require('http-proxy-middleware');
 
 // run init tasks
-gulp.task('default', ['dependencies', 'js', 'html', 'css']);
+gulp.task('default', ['dependencies', 'js', 'html', 'css', 'watch', 'serve', 'nodemon', 'browser-sync']);
 
 // run development task
 gulp.task('dev', ['watch', 'serve', 'nodemon']);
